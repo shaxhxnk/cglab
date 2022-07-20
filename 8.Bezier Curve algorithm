@@ -1,3 +1,4 @@
+// Bezier Curve
 #include<GL/glut.h>
 #include<stdio.h>
 #include<math.h>
@@ -28,7 +29,6 @@ void computeBezPt(GLfloat u, wcPt3D* bezPt, GLint nCtrlPts,
 	GLfloat bezBlendFcn;
 	bezPt->x = bezPt->y = bezPt->z = 0.0;
 	for (k = 0; k < nCtrlPts; k++)
-	
 	{
 		bezBlendFcn = C[k] * pow(u, k) * pow(1 - u, n - k);
 		bezPt->x += ctrlPts[k].x * bezBlendFcn;
@@ -73,8 +73,7 @@ void displayFcn()
 	glClear(GL_COLOR_BUFFER_BIT);
 	glPointSize(5);
 	glPushMatrix();
-	
-		glLineWidth(5);
+	glLineWidth(5);
 	for (int i = 0; i < 24; i++)
 	{
 		glTranslatef(0, -0.8, 0);
@@ -107,15 +106,14 @@ void d_menu(int op)
 	else if (op == 3)
 		glColor3f(0.0, 0.0, 1.0);
 	else if (op == 4)
-		return;
+		exit(0);
 	glutPostRedisplay();
 }
 void main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-	
-		glutInitWindowPosition(50, 50);
+	glutInitWindowPosition(50, 50);
 	glutInitWindowSize(winWidth, winHeight);
 	glutCreateWindow("Bezier Curve");
 	glutCreateMenu(d_menu);
